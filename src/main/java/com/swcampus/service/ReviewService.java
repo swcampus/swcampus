@@ -1,5 +1,9 @@
 package com.swcampus.service;
 
-public class ReviewService {
+import com.swcampus.domain.ReviewVO;
 
+public interface ReviewService {
+	
+	public void register(ReviewVO review);
+	
 }
