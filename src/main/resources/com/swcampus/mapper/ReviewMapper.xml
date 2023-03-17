@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swcampus.mapper.ReviewMapper">
+
+	<!-- 리뷰 등록 -->
+	<insert id="insert">
+		insert into review(reviewId, email, lectureId, regDate, contents)
+		values(seq_review.nextval, #{email}, #{lectureId}, sysdate, #{contents})
+	</insert>
+	
+	<!-- 전체 리뷰 -->
+	<select id="getAllList" resultType="com.swcampus.domain.ReviewVO">
+		select * from review
+	</select>
+	
+	<!-- 특정 강좌에 해당하는 리뷰 목록 -->
+	<select id="getListByLectureId" resultType="com.swcampus.domain.ReviewVO">
+		select * from review where lectureId = #{lectureId}
+	</select>
+	
+	<!-- 특정 회원이 작성한 리뷰 목록 -->
+	<select id="getMyList" resultType="com.swcampus.domain.ReviewVO">
+		select * from review where email = #{email}
+	</select>
+	
+	
+	<!-- 리뷰 상세 -->
+	<select id="read" resultType="com.swcampus.domain.ReviewVO">
+		select * from review where reviewId = #{reviewId}
+	</select>
+	
+	<!-- 리뷰 수정 -->
+	<update id="update">
+		update review 
+			set lectureId = #{lectureId},
+				starRating = #{starRating},
+				contents = #{contents}
+			where reviewId = #{reviewId}	
+	</update>
+	
+	<!-- 리뷰 삭제 -->
+	<delete id="delete">
+		delete from review where reviewId = #{reviewId}
+	</delete>
+</mapper>
