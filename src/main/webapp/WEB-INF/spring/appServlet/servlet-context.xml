@@ -21,8 +21,6 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.swcampus.web" />
-	
-	
+	<context:component-scan base-package="com.swcampus" />
 	
 </beans:beans>

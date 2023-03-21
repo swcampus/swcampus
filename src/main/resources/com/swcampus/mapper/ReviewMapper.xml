@@ -7,25 +7,29 @@
 
 	<!-- 리뷰 등록 -->
 	<insert id="insert">
-		insert into review(reviewId, email, lectureId, regDate, contents)
-		values(seq_review.nextval, #{email}, #{lectureId}, sysdate, #{contents})
+	
+		<selectKey keyProperty="reviewId" order="BEFORE" resultType="Long">
+			select seq_review.nextval from dual
+		</selectKey>
+	
+		insert into review(reviewId, email, lectureId, starRating, regDate, contents)
+			values(#{reviewId}, #{email}, #{lectureId}, #{starRating}, sysdate, #{contents})
 	</insert>
 	
 	<!-- 전체 리뷰 -->
 	<select id="getAllList" resultType="com.swcampus.domain.ReviewVO">
-		select * from review
+		select * from review order by reviewId desc
 	</select>
 	
 	<!-- 특정 강좌에 해당하는 리뷰 목록 -->
 	<select id="getListByLectureId" resultType="com.swcampus.domain.ReviewVO">
-		select * from review where lectureId = #{lectureId}
+		select * from review where lectureId = #{lectureId} order by reviewId desc
 	</select>
 	
 	<!-- 특정 회원이 작성한 리뷰 목록 -->
 	<select id="getMyList" resultType="com.swcampus.domain.ReviewVO">
-		select * from review where email = #{email}
+		select * from review where email = #{email} order by reviewId desc
 	</select>
-	
 	
 	<!-- 리뷰 상세 -->
 	<select id="read" resultType="com.swcampus.domain.ReviewVO">

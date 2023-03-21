@@ -27,8 +27,9 @@ public class ReviewMapperTests {
 //		
 //		ReviewVO review = new ReviewVO();
 //		review.setEmail("aaa@aaa.com");
-//		review.setLectureId(1L);
-//		review.setContents("¸®ºä ³»¿ë");
+//		review.setLectureId(2L);
+//		review.setContents("¸®ºä ³»¿ë4");
+//		review.setStarRating(4);
 //		
 //		int count = mapper.insert(review);
 //		
@@ -45,7 +46,7 @@ public class ReviewMapperTests {
 	
 //	@Test
 //	public void testGetListByLectureId() {
-//		List<ReviewVO> list = mapper.getListByLectureId(1L);
+//		List<ReviewVO> list = mapper.getListByLectureId(2L);
 //		list.forEach(review -> log.info(review));
 //	}
 	
