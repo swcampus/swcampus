@@ -2,7 +2,7 @@ package com.swcampus.domain;
 
 import lombok.Data;
 
-// À¯È¿¼º °Ë»ç¸¦ ÅëÇØ º°Á¡Àº 1~5±îÁö
+//ìœ íš¨ì„± ê²€ì‚¬ë¥¼ í†µí•´ ë³„ì ì€ 1~5ê¹Œì§€
 
 @Data
 public class ReviewVO {
@@ -14,5 +14,5 @@ public class ReviewVO {
 	private Integer starRating;
 	private String contents;
 	private String approval;
+	
 }
-                                     

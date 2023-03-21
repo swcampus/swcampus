@@ -6,25 +6,24 @@ import com.swcampus.domain.ReviewVO;
 
 public interface ReviewService {
 	
-	// ¸®ºä µî·Ï
-	public void register(ReviewVO review);
+	// ë¦¬ë·° ë“±ë¡
+	public int register(ReviewVO review);
 	
-	// ¸®ºä ÀüÃ¼ ¸ñ·Ï
-	public void getAllList();
+	// ë¦¬ë·° ì „ì²´ ëª©ë¡
+	public List<ReviewVO> getAllList();
 	
-	// Æ¯Á¤ °­ÀÇÀÇ ¸®ºä ¸ñ·Ï
+	// íŠ¹ì • ê°•ì˜ì˜ ë¦¬ë·° ëª©ë¡
 	public List<ReviewVO> getListByLectureId(Long lectureId);
 	
-	// Æ¯Á¤ È¸¿øÀÌ ÀÛ¼ºÇÑ °­ÀÇ ¸®ºä ¸ñ·Ï
+	// íŠ¹ì • íšŒì›ì´ ì‘ì„±í•œ ê°•ì˜ ë¦¬ë·° ëª©ë¡
 	public List<ReviewVO> getMyList(String email);
 	
-	// ¸®ºä »ó¼¼
+	// ë¦¬ë·° ìƒì„¸
 	public ReviewVO get(Long reviewId);
 	
-	// ¸®ºä ¼öÁ¤
+	// ë¦¬ë·° ìˆ˜ì •
 	public boolean modify(ReviewVO review);
 	
-	// ¸®ºä »èÁ¦
+	// ë¦¬ë·° ì‚­ì œ
 	public boolean remove(Long reviewId);
-	
 }

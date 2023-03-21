@@ -20,51 +20,63 @@ public class ReviewsServieceImpl implements ReviewService {
 	private ReviewMapper mapper;
 
 	@Override
-	public void register(ReviewVO review) {
+	public int register(ReviewVO review) {
 		
 		log.info("review register......" + review);
 		
 		int result = mapper.insert(review);
 		
-		// ¸®ºä¿¡ Ã·ºÎµÈ ÀÌ¹ÌÁö ÆÄÀÏÀÌ ÀÖÀ¸¸é ÀÌ¹ÌÁö ÆÄÀÏÀ» database¿¡ ÀúÀå
-		// image ±¸Çö½Ã Ãß°¡ ±¸Çö 
+		// ë¦¬ë·°ì— ì²¨ë¶€ëœ ì´ë¯¸ì§€ íŒŒì¼ì´ ìˆìœ¼ë©´ ì´ë¯¸ì§€ íŒŒì¼ì„ databaseì— ì €ì¥
+		// image êµ¬í˜„ì‹œ ì¶”ê°€ êµ¬í˜„
+		
+		return result;
 	}
 
 	@Override
-	public void getAllList() {
+	public List<ReviewVO> getAllList() {
+		
 		log.info("review getAllList.....");
 		
-		
+		return mapper.getAllList();
 	}
 
 	@Override
 	public List<ReviewVO> getListByLectureId(Long lectureId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		log.info("review getListByLectureId.....");
+		
+		return mapper.getListByLectureId(lectureId);
 	}
 
 	@Override
 	public List<ReviewVO> getMyList(String email) {
-		// TODO Auto-generated method stub
-		return null;
+
+		log.info("review getMyList.....");
+		
+		return mapper.getMyList(email);
 	}
 
 	@Override
 	public ReviewVO get(Long reviewId) {
-		// TODO Auto-generated method stub
-		return null;
+
+		log.info("review get.....");
+		
+		return mapper.read(1L);
 	}
 
 	@Override
 	public boolean modify(ReviewVO review) {
-		// TODO Auto-generated method stub
-		return false;
+
+		log.info("review modify.....");
+		
+		return mapper.update(review) == 1;
 	}
 
 	@Override
 	public boolean remove(Long reviewId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
+		log.info("review remove.....");
+		
+		return mapper.delete(reviewId) == 1;
+	}
 }

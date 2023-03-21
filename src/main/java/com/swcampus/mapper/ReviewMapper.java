@@ -2,30 +2,28 @@ package com.swcampus.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Select;
-
 import com.swcampus.domain.ReviewVO;
 
 public interface ReviewMapper {
 	
-	// ¸®ºä µî·Ï
+	// ë¦¬ë·° ë“±ë¡   
 	int insert(ReviewVO reviewVo);
 	
-	// ¸®ºä ÀüÃ¼ ¸ñ·Ï
+	// ë¦¬ë·° ì „ì²´ ëª©ë¡
 	List<ReviewVO> getAllList();
 	
-	// Æ¯Á¤ °­ÀÇÀÇ ¸®ºä ¸ñ·Ï
+	// íŠ¹ì • ê°•ì˜ì˜ ë¦¬ë·° ëª©ë¡
 	List<ReviewVO> getListByLectureId(Long lectureId);
 	
-	// Æ¯Á¤ È¸¿øÀÌ ÀÛ¼ºÇÑ °­ÀÇ ¸®ºä ¸ñ·Ï
+	// íŠ¹ì • íšŒì›ì´ ì‘ì„±í•œ ê°•ì˜ ë¦¬ë·° ëª©ë¡
 	List<ReviewVO> getMyList(String email);
 	
-	// ¸®ºä »ó¼¼
+	// ë¦¬ë·° ìƒì„¸
 	ReviewVO read(Long reviewId);
 	
-	// ¸®ºä ¼öÁ¤
+	// ë¦¬ë·° ìˆ˜ì •
 	int update(ReviewVO review);
 	
-	// ¸®ºä »èÁ¦
+	// ë¦¬ë·° ì‚­ì œ
 	int delete(Long reviewId);
 }

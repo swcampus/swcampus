@@ -15,7 +15,7 @@ import lombok.extern.log4j.Log4j;
 
 //test
 @RunWith(SpringJUnit4ClassRunner.class)
-//context °æ·Î¸¦ ¾Ë¾Æ¾ß Å×½ºÆ® °¡´É
+//context ê²½ë¡œ
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
 public class ReviewServiceTests {
@@ -29,18 +29,55 @@ public class ReviewServiceTests {
 //		assertNotNull(service);
 //	}
 
-	@Test
-	public void testRegister() {
-		
-		ReviewVO review = new ReviewVO();
-		review.setEmail("bbb@bbb.com");
-		review.setLectureId(3L);
-		review.setContents("¸®ºä ³»¿ë");
-		review.setStarRating(4);
-		
-		service.register(review);
-		
-		log.info("»ý¼ºµÈ °Ô½Ã¹°ÀÇ ¹øÈ£ : " + review.getReviewId());
-	}
+//	@Test
+//	public void testRegister() {
+//		
+//		ReviewVO review = new ReviewVO();
+//		review.setEmail("bbb@bbb.com");
+//		review.setLectureId(3L);
+//		review.setContents("ë¦¬ë·° ë‚´ìš©");
+//		review.setStarRating(4);
+//		
+//		service.register(review);
+//		
+//		log.info("ë“±ë¡ëœ ë¦¬ë·° ë²ˆí˜¸ : " + review.getReviewId());
+//	}
 	
+//	@Test
+//	public void testGetAllList() {
+//		service.getAllList().forEach( review -> log.info(review));
+//	}
+	
+//	@Test
+//	public void testGetListByLectureId() {
+//		service.getListByLectureId(1L).forEach(review -> log.info(review));
+//	}
+	
+//	@Test
+//	public void testGetMyList() {
+//		service.getMyList("aaa@aaa.com");
+//	}
+	
+//	@Test
+//	public void testGet() {
+//		service.get(1L);
+//	}
+	
+//	@Test
+//	public void testUpdate() {
+//		
+//		ReviewVO review = service.get(1L);
+//		
+//		if(review == null) {
+//			return;
+//		}
+//		
+//		log.info("MODIFY RESULT : " + service.modify(review));
+//	}
+	
+//	@Test
+//	public void testDelete() {
+//		
+//		log.info("REMOVE RESULT : " + service.remove(1L));
+//	}
 }
