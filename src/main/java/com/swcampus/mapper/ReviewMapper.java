@@ -15,7 +15,7 @@ public interface ReviewMapper {
 	// 특정 강의의 리뷰 목록
 	List<ReviewVO> getListByLectureId(Long lectureId);
 	
-	// 특정 회원이 작성한 강의 리뷰 목록
+	// 내가 작성한 강의 리뷰 목록
 	List<ReviewVO> getMyList(String email);
 	
 	// 리뷰 상세

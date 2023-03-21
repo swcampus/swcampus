@@ -55,12 +55,13 @@ public class ReviewServiceTests {
 	
 //	@Test
 //	public void testGetMyList() {
-//		service.getMyList("aaa@aaa.com");
+//		service.getMyList("aaa@aaa.com").forEach(review -> log.info(review));
 //	}
 	
 //	@Test
 //	public void testGet() {
-//		service.get(1L);
+//		log.info(service.get(2L));
+//		
 //	}
 	
 //	@Test

@@ -19,6 +19,7 @@ public class ReviewsServieceImpl implements ReviewService {
 	@Autowired
 	private ReviewMapper mapper;
 
+	// 리뷰 등록
 	@Override
 	public int register(ReviewVO review) {
 		
@@ -32,6 +33,7 @@ public class ReviewsServieceImpl implements ReviewService {
 		return result;
 	}
 
+	// 리뷰 전체 목록
 	@Override
 	public List<ReviewVO> getAllList() {
 		
@@ -40,6 +42,7 @@ public class ReviewsServieceImpl implements ReviewService {
 		return mapper.getAllList();
 	}
 
+	// 특정 강의의 리뷰 목록
 	@Override
 	public List<ReviewVO> getListByLectureId(Long lectureId) {
 		
@@ -48,6 +51,7 @@ public class ReviewsServieceImpl implements ReviewService {
 		return mapper.getListByLectureId(lectureId);
 	}
 
+	// 내가 작성한 강의 리뷰 목록
 	@Override
 	public List<ReviewVO> getMyList(String email) {
 
@@ -61,13 +65,15 @@ public class ReviewsServieceImpl implements ReviewService {
 
 		log.info("review get.....");
 		
-		return mapper.read(1L);
+		return mapper.read(reviewId);
 	}
 
 	@Override
 	public boolean modify(ReviewVO review) {
 
 		log.info("review modify.....");
+		
+		// 작성자 본인과 일치하는지 확인한 후에 수정이 가능해야한다.
 		
 		return mapper.update(review) == 1;
 	}
@@ -76,6 +82,8 @@ public class ReviewsServieceImpl implements ReviewService {
 	public boolean remove(Long reviewId) {
 
 		log.info("review remove.....");
+		
+		// 작성자 본인과 일치하는지 확인한 후에 수정이 가능해야한다.
 		
 		return mapper.delete(reviewId) == 1;
 	}

@@ -6,11 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.swcampus.domain.ReviewVO;
@@ -49,4 +50,58 @@ public class ReviewController {
 		return new ResponseEntity<List<ReviewVO>> (service.getAllList(), HttpStatus.OK);
 	}
 	
+	// 특정 강의의 리뷰 목록
+	@GetMapping(value = "/list/lecture/{lectureId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<List<ReviewVO>> getListByLectureId(@PathVariable("lectureId") Long lectureId){
+		
+		log.info("getListByLecture..... / lectureId : " + lectureId);
+		
+		return new ResponseEntity<List<ReviewVO>> (service.getListByLectureId(lectureId), HttpStatus.OK);
+	}
+	
+	// 내가 작성한 강의 리뷰 목록
+	@GetMapping(value = "/mylist", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<List<ReviewVO>> getMyList(){
+		
+		// spring security 적용 전 테스트용
+		String email = "aaa@aaa.com";
+		
+		// spring security 적용 후에 사용할 코드
+//		UserDetails userDetails = (UserDetails) auth.getPrincipal();
+//		List<ReviewVO> reviewList = service.getMyList(userDetails.getUsername());
+//		String email = userDeails.getUsername();
+		
+		log.info("getMyList..... / memberId : " + email);
+		
+		return new ResponseEntity<List<ReviewVO>> (service.getMyList(email), HttpStatus.OK);	
+	}
+	
+	// 리뷰 상세
+	@GetMapping(value = "/detail/{reviewId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<ReviewVO> get(@PathVariable("reviewId") Long reviewId){
+		
+		log.info("get..... / reviewId : " + reviewId);
+		
+		return new ResponseEntity<ReviewVO> (service.get(reviewId), HttpStatus.OK);
+	}
+	
+	// 리뷰 수정
+	@RequestMapping(method = RequestMethod.PUT, value = "/update", consumes = "application/json", produces = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> modify(@RequestBody ReviewVO review){
+		
+		log.info("modify..... / reviewVO : " + review);
+		
+		return service.modify(review) == true ? new ResponseEntity<String> ("Success", HttpStatus.OK) :
+			new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	// 리뷰 삭제
+	@GetMapping(value = "delete/{reviewId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<String> remove(@PathVariable("reviewId") Long reviewId){
+		
+		log.info("remove..... / reviewId : " + reviewId);
+		
+		return service.remove(reviewId) == true ? new ResponseEntity<String> ("Success", HttpStatus.OK) :
+			new ResponseEntity<String> (HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 }
