@@ -14,7 +14,7 @@ import lombok.extern.log4j.Log4j;
 
 //test
 @RunWith(SpringJUnit4ClassRunner.class)
-//context °æ·Î¸¦ ¾Ë¾Æ¾ß Å×½ºÆ® °¡´É
+//context ï¿½ï¿½Î¸ï¿½ ï¿½Ë¾Æ¾ï¿½ ï¿½×½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
 public class ReviewMapperTests {
@@ -28,7 +28,7 @@ public class ReviewMapperTests {
 //		ReviewVO review = new ReviewVO();
 //		review.setEmail("aaa@aaa.com");
 //		review.setLectureId(2L);
-//		review.setContents("¸®ºä ³»¿ë4");
+//		review.setContents("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½4");
 //		review.setStarRating(4);
 //		
 //		int count = mapper.insert(review);
@@ -68,7 +68,7 @@ public class ReviewMapperTests {
 //		ReviewVO review = new ReviewVO();
 //		review.setReviewId(1L);
 //		review.setLectureId(1000L);
-//		review.setContents("¼öÁ¤µÈ ³»¿ë");
+//		review.setContents("ë¦¬ë·° ë‚´ìš©");
 //		review.setStarRating(4);
 //		
 //		int count = mapper.update(review);
@@ -81,4 +81,10 @@ public class ReviewMapperTests {
 //		int count = mapper.delete(1L);
 //		log.info("delete count : " + count);
 //	}
+	
+	
+	@Test
+	public void testGetBestList() {
+		mapper.getBestList().forEach(review -> log.info(review));
+	}
 }

@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -17,6 +18,7 @@ import lombok.extern.log4j.Log4j;
 
 //test
 @RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
 //context 경로
 @ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml",
 	"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml"})
@@ -39,10 +41,10 @@ public class ReviewControllerTests {
 //		
 //		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/review/register")
 //				.param("email", "ddd@ddd.com")
-//				.param("lectureId", 4L)
+//				.param("lectureId", 2L)
 //				.param("starRating", 3)
 //				.param("contents", "리뷰 내용")
-//				).andReturn().getModelAndView().getViewName();
+//				).andReturn();
 //		
 //		log.info(resultPage);
 //	}
@@ -52,8 +54,6 @@ public class ReviewControllerTests {
 //		
 //		log.info(
 //				mockMvc.perform(MockMvcRequestBuilders.get("/review/list"))
-//				.andReturn()
-//				.getModelAndView()
-//				.getModelMap());
+//				.andReturn());
 //	}
 }

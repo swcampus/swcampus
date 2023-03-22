@@ -26,4 +26,10 @@ public interface ReviewMapper {
 	
 	// 리뷰 삭제
 	int delete(Long reviewId);
+	
+	// 베스트 강의 리뷰 8개 목록
+	List<ReviewVO> getBestList();
+	
+	// 최신 강의 리뷰 8개 목록
+	List<ReviewVO> getNewsetList();
 }
