@@ -28,7 +28,7 @@ public class ReviewMapperTests {
 //		ReviewVO review = new ReviewVO();
 //		review.setEmail("aaa@aaa.com");
 //		review.setLectureId(2L);
-//		review.setContents("���� ����4");
+//		review.setContents("리뷰내용");
 //		review.setStarRating(4);
 //		
 //		int count = mapper.insert(review);
@@ -74,7 +74,7 @@ public class ReviewMapperTests {
 //		int count = mapper.update(review);
 //		log.info("update count : " + count);
 //	}
-//	
+
 //	@Test
 //	public void testDelete() {
 //		
@@ -82,9 +82,38 @@ public class ReviewMapperTests {
 //		log.info("delete count : " + count);
 //	}
 	
+//	@Test
+//	public void testGetBestList() {
+//		mapper.getBestList().forEach(review -> log.info(review));
+//	}
+	
+//	@Test
+//	public void testGetNewestList() {
+//		mapper.getNewsetList().forEach(review -> log.info(review));
+//	}
+	
+//	@Test
+//	public void testGetReviewListCnt() {
+//		log.info("총 리뷰 개수 : " +  mapper.getReviewListCnt());
+//	}
+	
+//	@Test
+//	public void TestGetReviewListCntByLectureId() {
+//		log.info("리뷰 개수 : " +  mapper.getReviewListCntByLectureId(1L));
+//	}
+	
+//	@Test
+//	public void TestGetStarRatingByLectureId()	{
+//		log.info("강의 평점 : " + mapper.getStarRatingByLectureId(1L));
+//	}
 	
 	@Test
-	public void testGetBestList() {
-		mapper.getBestList().forEach(review -> log.info(review));
+	public void TestUpateApproval() {
+		
+		ReviewVO review = new ReviewVO();
+		review.setLectureId(1L);
+		review.setApproval("승인");
+		
+		log.info(mapper.updateApproval(review));
 	}
 }

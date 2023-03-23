@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.swcampus.domain.ReviewDTO;
 import com.swcampus.domain.ReviewVO;
 import com.swcampus.mapper.ReviewMapper;
 
@@ -60,6 +61,7 @@ public class ReviewsServieceImpl implements ReviewService {
 		return mapper.getMyList(email);
 	}
 
+	// 리뷰 상세
 	@Override
 	public ReviewVO get(Long reviewId) {
 
@@ -68,6 +70,7 @@ public class ReviewsServieceImpl implements ReviewService {
 		return mapper.read(reviewId);
 	}
 
+	// 리뷰 수정
 	@Override
 	public boolean modify(ReviewVO review) {
 
@@ -78,6 +81,7 @@ public class ReviewsServieceImpl implements ReviewService {
 		return mapper.update(review) == 1;
 	}
 
+	// 리뷰 삭제
 	@Override
 	public boolean remove(Long reviewId) {
 
@@ -87,4 +91,57 @@ public class ReviewsServieceImpl implements ReviewService {
 		
 		return mapper.delete(reviewId) == 1;
 	}
+
+	// 베스트 강의 리뷰 8개 목록
+	@Override
+	public List<ReviewDTO> getBestList() {
+		
+		log.info("review getBestList.....");
+		
+		return mapper.getBestList();
+	}
+
+	@Override
+	public List<ReviewVO> getNewsetList() {
+		
+		log.info("review getNewsetList.....");
+		
+		return mapper.getNewsetList();
+	}
+
+	@Override
+	public Long getReviewListCnt() {
+		
+		log.info("review getReviewListCnt.....");
+		
+		return mapper.getReviewListCnt();
+	}
+
+	@Override
+	public Long getReviewListCntByLectureId(Long lectureId) {
+		
+		log.info("review getReviewListCntByLectureId.....");
+		
+		return mapper.getReviewListCntByLectureId(lectureId);
+	}
+
+	@Override
+	public Float getStarRatingByLectureId(Long lectureId) {
+		
+		log.info("review getStarRatingByLectureId.....");
+		
+		return mapper.getStarRatingByLectureId(lectureId);
+	}
+
+	@Override
+	public Integer updateApproval(ReviewVO review) {
+		
+		log.info("review updateApproval.....");
+		
+		// 관리자인지 확인한 후에 
+		
+		return mapper.updateApproval(review);
+	}
+	
+	
 }
