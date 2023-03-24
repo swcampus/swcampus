@@ -34,6 +34,9 @@ public interface ReviewService {
 	// 최신 강의 리뷰 8개 목록
 	public List<ReviewVO> getNewsetList();
 	
+	// 리뷰 승인 상태 변경
+	public boolean updateApproval(ReviewVO review);
+	
 	// 모든 리뷰 개수
 	public Long getReviewListCnt();
 	
@@ -43,6 +46,4 @@ public interface ReviewService {
 	// 특정 강의의 리뷰 평점
 	public Float getStarRatingByLectureId(Long lectureId);
 	
-	// 리뷰 승인 상태 변경
-	public Integer updateApproval(ReviewVO review);
 }

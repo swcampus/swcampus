@@ -93,6 +93,17 @@ public class ReviewMapperTests {
 //	}
 	
 //	@Test
+//	public void TestUpateApproval() {
+//		
+//		ReviewVO review = new ReviewVO();
+//		review.setLectureId(1L);
+//		review.setApproval("승인");
+//		
+//		log.info(mapper.updateApproval(review));
+//	}
+
+	
+//	@Test
 //	public void testGetReviewListCnt() {
 //		log.info("총 리뷰 개수 : " +  mapper.getReviewListCnt());
 //	}
@@ -107,13 +118,4 @@ public class ReviewMapperTests {
 //		log.info("강의 평점 : " + mapper.getStarRatingByLectureId(1L));
 //	}
 	
-	@Test
-	public void TestUpateApproval() {
-		
-		ReviewVO review = new ReviewVO();
-		review.setLectureId(1L);
-		review.setApproval("승인");
-		
-		log.info(mapper.updateApproval(review));
-	}
 }

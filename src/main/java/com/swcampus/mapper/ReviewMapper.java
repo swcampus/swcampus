@@ -34,6 +34,9 @@ public interface ReviewMapper {
 	// 최신 강의 리뷰 8개 목록
 	List<ReviewVO> getNewsetList();
 	
+	// 리뷰 승인 상태 변경
+	Integer updateApproval(ReviewVO review);
+	
 	// 모든 리뷰의 개수
 	Long getReviewListCnt();
 	
@@ -43,6 +46,4 @@ public interface ReviewMapper {
 	// 특정 강의의 리뷰 평점
 	Float getStarRatingByLectureId(Long lectureId);
 	
-	// 리뷰 승인 상태 변경
-	Integer updateApproval(ReviewVO review);
 }

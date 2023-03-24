@@ -81,4 +81,49 @@ public class ReviewServiceTests {
 //		
 //		log.info("REMOVE RESULT : " + service.remove(1L));
 //	}
+	
+//	@Test
+//	public void testGetBestList() {
+//		
+//		service.getBestList().forEach(review -> log.info(review));
+//		
+//	}
+	
+//	@Test
+//	public void testGetNewestList() {
+//		
+//		service.getNewsetList().forEach(review -> log.info(review));
+//		
+//	}
+	
+	@Test
+	public void testGetUpdateApproval() {
+		
+		ReviewVO review = new ReviewVO();
+		review.setLectureId(1L);
+		review.setApproval("승인");
+		
+		log.info(service.updateApproval(review));
+	}
+	
+//	@Test
+//	public void testGetReviewListCnt() {
+//		
+//		log.info("리뷰 총 수 : " + service.getReviewListCnt()); 
+//	}
+	
+//	@Test
+//	public void testGetReviewListCntByLectureId() {
+//		
+//		log.info("리뷰 수 : " + service.getReviewListCntByLectureId(2L)); 
+//		
+//	}
+	
+//	@Test
+//	public void testGetStarRatingByLectureId() {
+//		
+//		log.info("강의 평점 : " + service.getStarRatingByLectureId(2L));
+//		
+//	}
+	
 }

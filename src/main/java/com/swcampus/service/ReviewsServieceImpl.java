@@ -101,6 +101,7 @@ public class ReviewsServieceImpl implements ReviewService {
 		return mapper.getBestList();
 	}
 
+	// 최신 강의 리뷰 8개 목록
 	@Override
 	public List<ReviewVO> getNewsetList() {
 		
@@ -108,7 +109,21 @@ public class ReviewsServieceImpl implements ReviewService {
 		
 		return mapper.getNewsetList();
 	}
+	
+	// 리뷰 승인 상태 변경
+	@Override
+	public boolean updateApproval(ReviewVO review) {
+		
+		log.info("review updateApproval.....");
+		
+		// 관리자인지 확인
+		
+		// 승인, 미승인인지 확인
+		
+		return mapper.updateApproval(review) == 1;
+	}
 
+	// 모든 리뷰 개수
 	@Override
 	public Long getReviewListCnt() {
 		
@@ -117,6 +132,7 @@ public class ReviewsServieceImpl implements ReviewService {
 		return mapper.getReviewListCnt();
 	}
 
+	// 특정 강의의 리뷰 개수 
 	@Override
 	public Long getReviewListCntByLectureId(Long lectureId) {
 		
@@ -125,6 +141,7 @@ public class ReviewsServieceImpl implements ReviewService {
 		return mapper.getReviewListCntByLectureId(lectureId);
 	}
 
+	// 특정 강의의 리뷰 평점
 	@Override
 	public Float getStarRatingByLectureId(Long lectureId) {
 		
@@ -133,15 +150,4 @@ public class ReviewsServieceImpl implements ReviewService {
 		return mapper.getStarRatingByLectureId(lectureId);
 	}
 
-	@Override
-	public Integer updateApproval(ReviewVO review) {
-		
-		log.info("review updateApproval.....");
-		
-		// 관리자인지 확인한 후에 
-		
-		return mapper.updateApproval(review);
-	}
-	
-	
 }

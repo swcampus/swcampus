@@ -71,6 +71,13 @@
 		]]>
 	</select>
 	
+	<!-- 리뷰 승인 상태 변경 -->
+	<update id="updateApproval">
+		update review
+			set approval = #{approval}
+			where lectureId = #{lectureId}
+	</update>
+	
 	<!-- 전체 리뷰 개수 -->
 	<select id="getReviewListCnt" resultType="Long">
 		select count(*) from review
@@ -85,12 +92,5 @@
 	<select id="getStarRatingByLectureId" resultType="Float">
 		select ROUND(AVG(NVL(starRating, 0)), 1) from review where lectureId = #{lectureId}
 	</select>
-	
-	<!-- 리뷰 승인 상태 변경 -->
-	<update id="updateApproval">
-		update review
-			set approval = #{approval}
-			where lectureId = #{lectureId}
-	</update>
 	
 </mapper>
