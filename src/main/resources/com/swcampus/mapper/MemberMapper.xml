@@ -10,4 +10,21 @@
 			values (#{email}, #{password}, #{name}, #{phone}, #{company}, #{job}, sysdate, #{auth})
 	</insert>
 	
+	<select id="readMember" resultType="com.swcampus.domain.MemberVO">
+		select * from member where email = #{email}
+	</select>
+	
+	<delete id="deleteMember">
+		delete from member where email = #{email}
+	</delete>
+	
+	<update id="updateMember">
+		update member set password = #{password}, name = #{name}, phone = #{phone}, company = #{company}, job = #{job}
+			where email = #{email}
+	</update>
+	
+	<select id="getListMember" resultType="com.swcampus.domain.MemberVO">
+		select * from member order by regdate desc
+	</select>
+	
 </mapper>
