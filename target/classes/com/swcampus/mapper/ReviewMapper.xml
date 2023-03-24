@@ -49,4 +49,48 @@
 	<delete id="delete">
 		delete from review where reviewId = #{reviewId}
 	</delete>
+	
+	<!-- 베스트 강의 리뷰 8개 목록 -->
+	<select id="getBestList" resultType="com.swcampus.domain.ReviewDTO">
+		<![CDATA[
+		select *
+			from (
+				select r.lectureId, ROUND(AVG(NVL(starRating, 0)), 1) AS average, COUNT(*) AS count 
+					from review r 
+					group by lectureId 
+				) avg_lec, lecture l
+    		where rownum <= 8 and avg_lec.lectureId = l.lectureId
+    		order by average desc
+    	]]>
+	</select>
+	
+	<!-- 최신 강의 리뷰 8개 목록 -->
+	<select id="getNewsetList" resultType="com.swcampus.domain.ReviewVO">
+		<![CDATA[
+			select * from (select * from review order by regDate desc) where rownum <= 8
+		]]>
+	</select>
+	
+	<!-- 리뷰 승인 상태 변경 -->
+	<update id="updateApproval">
+		update review
+			set approval = #{approval}
+			where lectureId = #{lectureId}
+	</update>
+	
+	<!-- 전체 리뷰 개수 -->
+	<select id="getReviewListCnt" resultType="Long">
+		select count(*) from review
+	</select>
+	
+	<!-- 특정 강의의 리뷰 개수 -->
+	<select id="getReviewListCntByLectureId" resultType="Long">
+		select count(*) from review where lectureId = #{lectureId}
+	</select>
+	
+	<!-- 특정 강의의 리뷰 평점 -->
+	<select id="getStarRatingByLectureId" resultType="Float">
+		select ROUND(AVG(NVL(starRating, 0)), 1) from review where lectureId = #{lectureId}
+	</select>
+	
 </mapper>
