@@ -9,4 +9,12 @@
 		INSERT INTO lecture (lectureID, agency, target, method, category, title, teacher, StarDate, endDate, classDetail, url) 
 		value(SEQ_LECTURE.nextval, #{agency}, #{target}, #{method}, #{category}, #{title}, #{teacher}, SYSDATE, SYSDATE, #{classDetail}, #{url})
 	</insert>
+	
+	<select id="getListLecturePaging" resultType="com.swcampus.domain.LectureVO">
+		<![CDATA[
+			SELECT * FROM (SELECT rownum rn FROM lecture WHERE rownum <= #{pageNum} * {amount} )
+			WHERE rn >  (#{pageNum} -1) * #{amount}
+		]]>
+	</select>
+
 </mapper>

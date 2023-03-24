@@ -1,8 +1,11 @@
 package com.swcampus.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.swcampus.domain.Criteria;
 import com.swcampus.domain.LectureVO;
 import com.swcampus.mapper.LectureMapper;
 
@@ -19,6 +22,11 @@ public class LectureServiceImpl implements LectureService{
 	@Override
 	public void insertLecture(LectureVO lectureVO) {
 		
+	}
+
+	@Override
+	public List<LectureVO> getLectureList(Criteria criteria) {
+		return lectureMapper.getListLecturePaging(criteria);
 	}
 	
 	
