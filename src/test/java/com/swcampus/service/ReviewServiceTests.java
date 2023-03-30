@@ -59,6 +59,16 @@ public class ReviewServiceTests {
 //	}
 	
 //	@Test
+//	public void testGetApprovedList() {
+//		service.getApprovedList().forEach(review -> log.info(review));
+//	}
+	
+//	@Test
+//	public void testGetUnapprovedList() {
+//		service.getUnapprovedList().forEach(review -> log.info(review));
+//	}
+	
+//	@Test
 //	public void testGet() {
 //		log.info(service.get(2L));
 //		
@@ -96,15 +106,15 @@ public class ReviewServiceTests {
 //		
 //	}
 	
-	@Test
-	public void testGetUpdateApproval() {
-		
-		ReviewVO review = new ReviewVO();
-		review.setLectureId(1L);
-		review.setApproval("승인");
-		
-		log.info(service.updateApproval(review));
-	}
+//	@Test
+//	public void testGetUpdateApproval() {
+//		
+//		ReviewVO review = new ReviewVO();
+//		review.setLectureId(1L);
+//		review.setApproval("승인");
+//		
+//		log.info(service.updateApproval(review));
+//	}
 	
 //	@Test
 //	public void testGetReviewListCnt() {
