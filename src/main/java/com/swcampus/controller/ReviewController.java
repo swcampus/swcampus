@@ -154,7 +154,7 @@ public class ReviewController {
 	}
 	
 	// 특정 강의의 리뷰 평점
-	@GetMapping(value = "/count/{lectureId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@GetMapping(value = "/score/{lectureId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Long> getStarRatingByLectureId(@PathVariable("lectureId") Long lectureId) {
 
 		log.info("getReviewListCntByLectureId.....");
