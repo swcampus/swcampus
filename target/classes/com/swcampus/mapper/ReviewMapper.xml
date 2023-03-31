@@ -28,18 +28,6 @@
 		]]>
 	</select>
 	
-	<!-- 페이징 처리된 전체 리뷰 목록 -->
-	<select id="getAllListWithPaging" resultType="com.swcampus.domain.ReviewVO">
-		<![CDATA[
-			select * 
-				from (select rownum rn, review.*
-							from review
-							where rownum <= #{pageNum} * #{amount}
-					)
-				where rn > (#{pageNum} - 1) * #{amount}
-		]]>
-	</select>
-	
 	<!-- 특정 강좌에 해당하는 리뷰 목록 -->
 	<select id="getListByLectureId" parameterType="com.swcampus.domain.Criteria" resultType="com.swcampus.domain.ReviewVO">
 		<![CDATA[

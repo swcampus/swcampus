@@ -14,10 +14,8 @@ public interface ReviewMapper {
 	Integer insert(ReviewVO reviewVo);
 	
 	// 리뷰 전체 목록
+	// 검색 : 
 	List<ReviewVO> getAllList(Criteria cri);
-	
-	// 페이징 처리된 리뷰 목록
-	//List<ReviewVO> getAllListWithPaging(Criteria cri);
 	
 	// 특정 강의의 리뷰 목록
 	List<ReviewVO> getListByLectureId(@Param("lectureId") Long lectureId, @Param("cri") Criteria cri);
