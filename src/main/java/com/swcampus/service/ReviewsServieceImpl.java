@@ -81,7 +81,6 @@ public class ReviewsServieceImpl implements ReviewService {
 		
 	}
 
-
 	// 리뷰 상세
 	@Override
 	public ReviewVO get(Long reviewId) {
@@ -124,7 +123,7 @@ public class ReviewsServieceImpl implements ReviewService {
 
 	// 최신 강의 리뷰 8개 목록
 	@Override
-	public List<ReviewVO> getNewsetList() {
+	public List<ReviewDTO> getNewsetList() {
 		
 		log.info("review getNewsetList.....");
 		

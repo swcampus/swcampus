@@ -42,7 +42,7 @@ public interface ReviewMapper {
 	List<ReviewDTO> getBestList();
 	
 	// 최신 강의 리뷰 8개 목록
-	List<ReviewVO> getNewsetList();
+	List<ReviewDTO> getNewsetList();
 	
 	// 리뷰 승인 상태 변경
 	Integer updateApproval(ReviewVO review);

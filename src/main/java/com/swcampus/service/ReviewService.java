@@ -39,7 +39,7 @@ public interface ReviewService {
 	public List<ReviewDTO> getBestList();
 	
 	// 최신 강의 리뷰 8개 목록
-	public List<ReviewVO> getNewsetList();
+	public List<ReviewDTO> getNewsetList();
 	
 	// 리뷰 승인 상태 변경
 	public boolean updateApproval(ReviewVO review);

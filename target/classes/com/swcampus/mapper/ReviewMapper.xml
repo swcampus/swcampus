@@ -78,21 +78,28 @@
 	<!-- 베스트 강의 리뷰 8개 목록 -->
 	<select id="getBestList" resultType="com.swcampus.domain.ReviewDTO">
 		<![CDATA[
-		select *
-			from (
-				select r.lectureId, ROUND(AVG(NVL(starRating, 0)), 1) AS average, COUNT(*) AS count 
-					from review r 
-					group by lectureId 
-				) avg_lec, lecture l
-    		where rownum <= 8 and avg_lec.lectureId = l.lectureId
-    		order by average desc
+			select *
+				from (
+					select r.lectureId, ROUND(AVG(NVL(starRating, 0)), 1) AS average, COUNT(*) AS count 
+						from review r 
+						group by lectureId 
+					) avg_lec, lecture l
+	    		where rownum <= 8 and avg_lec.lectureId = l.lectureId
+	    		order by average desc
     	]]>
 	</select>
 	
 	<!-- 최신 강의 리뷰 8개 목록 -->
-	<select id="getNewsetList" resultType="com.swcampus.domain.ReviewVO">
+	<select id="getNewsetList" resultType="com.swcampus.domain.ReviewDTO">
 		<![CDATA[
-			select * from (select * from review order by regDate desc) where rownum <= 8
+			select *
+				from (
+					select r.lectureId, ROUND(AVG(NVL(starRating, 0)), 1) AS average, COUNT(*) AS count 
+						from review r 
+						group by lectureId 
+					) avg_lec, lecture l
+	    		where rownum <= 8 and avg_lec.lectureId = l.lectureId
+	    		order by startDate desc
 		]]>
 	</select>
 	

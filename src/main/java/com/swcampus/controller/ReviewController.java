@@ -146,11 +146,11 @@ public class ReviewController {
 	
 	// 최신 강의의 리뷰 8개 목록
 	@GetMapping(value = "/list/newest", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<List<ReviewVO>> getNewestList(){
+	public ResponseEntity<List<ReviewDTO>> getNewestList(){
 		
 		log.info("getNewestList.....");
 		
-		return new ResponseEntity<List<ReviewVO>>(service.getNewsetList(), HttpStatus.OK);
+		return new ResponseEntity<List<ReviewDTO>>(service.getNewsetList(), HttpStatus.OK);
 	}
 	
 	// 리뷰 승인 상태 변경

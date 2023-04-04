@@ -37,14 +37,14 @@ public class ReviewMapperTests {
 //		log.info("insert count : " + count);
 //	}
 	
-	@Test
-	public void testGetAllList() {
-		Criteria cri = new Criteria();
-		cri.setPageNum(1);
-		cri.setAmount(2);
-		List<ReviewVO> list = mapper.getAllList(cri);
-		list.forEach(review -> log.info(review));
-	}
+//	@Test
+//	public void testGetAllList() {
+//		Criteria cri = new Criteria();
+//		cri.setPageNum(1);
+//		cri.setAmount(2);
+//		List<ReviewVO> list = mapper.getAllList(cri);
+//		list.forEach(review -> log.info(review));
+//	}
 	
 	
 //	@Test
@@ -118,10 +118,10 @@ public class ReviewMapperTests {
 //		mapper.getBestList().forEach(review -> log.info(review));
 //	}
 	
-//	@Test
-//	public void testGetNewestList() {
-//		mapper.getNewsetList().forEach(review -> log.info(review));
-//	}
+	@Test
+	public void testGetNewestList() {
+		mapper.getNewsetList().forEach(review -> log.info(review));
+	}
 	
 //	@Test
 //	public void TestUpateApproval() {

@@ -126,25 +126,25 @@ button[type="submit"] {
 		<div class="best-contents">
 			<div class="best-lecture">
 				<!-- 반복문시작 -->
-				<c:forEach var="main" begin="0" end="10" items="${mainList }">
+				<c:forEach var="list" items="${bestLectureList }">
 					<div class=" lecture-card" onclick="location.href='/details/details?lectureNo=${main.lectureNo}&userNo=${user}'">
 						<div class="lecture">
-							<p class="association">한국 소프트웨어협회</p>
-							<div class="lectureTitle">${main.lectureTitle }</div>
+							<p class="association">${list.agency }</p>
+							<div class="lectureTitle">${list.title }</div>
 							<div>
 								<div class="period">
-									<span>2023-02-27</span><span>~</span><span>2023-05-23</span>
+									<span>${list.startDate }</span><span>~</span><span>${list.endDate }</span>
 								</div>
-								<span class="teacher">강사명</span><br>
+								<span class="teacher">${list.teacher }</span><br>
 							</div>
 							<div class="reviewRatingLine">
-								<span>리뷰</span> <span>555</span> <span>개</span> <span>[평점</span>
-								<span>3.5</span> <span> 점]</span>
+								<span>리뷰</span> <span>${list.count }</span> <span>개</span> <span>[평점</span>
+								<span>${list.average }</span> <span> 점]</span>
 							</div>
 
 							<div class="categoryType">
-								<span class="CategoryType">재직자</span><span class="CategoryType">온라인</span><span
-									class="CategoryType">백엔드</span>
+								<span class="CategoryType">${list.target }</span><span class="CategoryType">${list.method }</span><span
+									class="CategoryType">${list.category }</span>
 							</div>
 						</div>
 					</div>
@@ -186,25 +186,25 @@ button[type="submit"] {
 		<div class="best-contents" style="margin-bottom: 180px;">
 			<div class="best-lecture">
 				<!-- 반복문시작 -->
-				<c:forEach var="i" begin="1" end="16">
+				<c:forEach var="list" items="${newestLectureList }">
 					<div class=" lecture-card">
 						<div class="lecture">
-							<p class="association">한국 소프트웨어협회</p>
-							<div class="lectureTitle">지멘스 지역혁신프로젝트 기업연계형 sw직무교육 1기</div>
+							<p class="association">${list.agency }</p>
+							<div class="lectureTitle">${list.title }</div>
 							<div>
 								<div class="period">
-									<span>2023-02-27</span><span>~</span><span>2023-05-23</span>
+									<span>${list.startDate }</span><span>~</span><span>${list.endDate }</span>
 								</div>
-								<span class="teacher">강사명</span><br>
+								<span class="teacher">${list.teacher }</span><br>
 							</div>
 							<div class="reviewRatingLine">
-								<span>리뷰</span> <span>555</span> <span>개</span> <span>[평점</span>
-								<span>3.5</span> <span> 점]</span>
+								<span>리뷰</span> <span>${list.count }</span> <span>개</span> <span>[평점</span>
+								<span>${list.average }</span> <span> 점]</span>
 							</div>
 
 							<div class="categoryType">
-								<span class="CategoryType">재직자</span><span class="CategoryType">온라인</span><span
-									class="CategoryType">백엔드</span>
+								<span class="CategoryType">${list.target }</span><span class="CategoryType">${list.method }</span><span
+									class="CategoryType">${list.category }</span>
 							</div>
 						</div>
 					</div>
@@ -216,8 +216,16 @@ button[type="submit"] {
 		<!-- best-contents -->
 
 	</div>
-	<script>
+	<script type="text/javascript" src="/resources/js/review.js"></script>
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
 		
+		
+		
+		
+	})
+	
 	</script>
 </body>
 </html>
