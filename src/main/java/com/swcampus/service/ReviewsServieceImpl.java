@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.swcampus.domain.Criteria;
 import com.swcampus.domain.ReviewDTO;
 import com.swcampus.domain.ReviewVO;
 import com.swcampus.mapper.ReviewMapper;
@@ -36,20 +37,20 @@ public class ReviewsServieceImpl implements ReviewService {
 
 	// 리뷰 전체 목록
 	@Override
-	public List<ReviewVO> getAllList() {
+	public List<ReviewVO> getAllList(Criteria cri) {
 		
 		log.info("review getAllList.....");
 		
-		return mapper.getAllList();
+		return mapper.getAllList(cri);
 	}
 
 	// 특정 강의의 리뷰 목록
 	@Override
-	public List<ReviewVO> getListByLectureId(Long lectureId) {
+	public List<ReviewVO> getListByLectureId(Long lectureId, Criteria cri) {
 		
 		log.info("review getListByLectureId.....");
 		
-		return mapper.getListByLectureId(lectureId);
+		return mapper.getListByLectureId(lectureId, cri);
 	}
 
 	// 내가 작성한 강의 리뷰 목록
@@ -60,6 +61,26 @@ public class ReviewsServieceImpl implements ReviewService {
 		
 		return mapper.getMyList(email);
 	}
+	
+	// 승인 리뷰 목록
+	@Override
+	public List<ReviewVO> getApprovedList() {
+		
+		log.info("review getApprovedList.....");
+		
+		return mapper.getApprovedList();
+	}
+
+	// 미승인 리뷰 목록
+	@Override
+	public List<ReviewVO> getUnapprovedList() {
+
+		log.info("review getUnapprovedList.....");
+		
+		return mapper.getUnapprovedList();
+		
+	}
+
 
 	// 리뷰 상세
 	@Override
@@ -125,11 +146,11 @@ public class ReviewsServieceImpl implements ReviewService {
 
 	// 모든 리뷰 개수
 	@Override
-	public Long getReviewListCnt() {
+	public Long getReviewListCnt(Criteria cri) {
 		
 		log.info("review getReviewListCnt.....");
 		
-		return mapper.getReviewListCnt();
+		return mapper.getReviewListCnt(cri);
 	}
 
 	// 특정 강의의 리뷰 개수 
@@ -149,5 +170,4 @@ public class ReviewsServieceImpl implements ReviewService {
 		
 		return mapper.getStarRatingByLectureId(lectureId);
 	}
-
 }

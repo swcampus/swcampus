@@ -1,4 +1,4 @@
-package com.swcampus.web;
+package com.swcampus.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -33,7 +33,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "/main";
 	}
 	
 }

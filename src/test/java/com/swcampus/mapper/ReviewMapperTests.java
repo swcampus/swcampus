@@ -8,13 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.swcampus.domain.Criteria;
 import com.swcampus.domain.ReviewVO;
 
 import lombok.extern.log4j.Log4j;
 
 //test
 @RunWith(SpringJUnit4ClassRunner.class)
-//context ��θ� �˾ƾ� �׽�Ʈ ����
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
 public class ReviewMapperTests {
@@ -37,16 +37,33 @@ public class ReviewMapperTests {
 //		log.info("insert count : " + count);
 //	}
 	
+	@Test
+	public void testGetAllList() {
+		Criteria cri = new Criteria();
+		cri.setPageNum(1);
+		cri.setAmount(2);
+		List<ReviewVO> list = mapper.getAllList(cri);
+		list.forEach(review -> log.info(review));
+	}
+	
+	
 //	@Test
-//	public void testGetAllList() {
+//	public void testPaging() {
 //		
-//		List<ReviewVO> list = mapper.getAllList();
+//		Criteria cri = new Criteria();
+//		cri.setPageNum(2);
+//		cri.setAmount(2);
+//		List<ReviewVO> list = mapper.getAllList(cri);
 //		list.forEach(review -> log.info(review));
 //	}
 	
+	
 //	@Test
 //	public void testGetListByLectureId() {
-//		List<ReviewVO> list = mapper.getListByLectureId(2L);
+//		Criteria cri = new Criteria();
+//		cri.setPageNum(2);
+//		cri.setAmount(2);
+//		List<ReviewVO> list = mapper.getListByLectureId(2L, cri);
 //		list.forEach(review -> log.info(review));
 //	}
 	
@@ -54,6 +71,20 @@ public class ReviewMapperTests {
 //	public void testGetMyList() {
 //		
 //		List<ReviewVO> list = mapper.getMyList("aaa@aaa.com");
+//		list.forEach(review -> log.info(review));
+//	}
+	
+//	@Test
+//	public void testGetApprovedList() {
+//		
+//		List<ReviewVO> list = mapper.getApprovedList();
+//		list.forEach(review -> log.info(review));
+//	}
+	
+//	@Test
+//	public void testGetUnapprovedList() {
+//		
+//		List<ReviewVO> list = mapper.getUnapprovedList();
 //		list.forEach(review -> log.info(review));
 //	}
 	
@@ -101,7 +132,6 @@ public class ReviewMapperTests {
 //		
 //		log.info(mapper.updateApproval(review));
 //	}
-
 	
 //	@Test
 //	public void testGetReviewListCnt() {

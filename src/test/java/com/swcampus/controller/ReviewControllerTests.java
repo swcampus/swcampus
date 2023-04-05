@@ -53,7 +53,15 @@ public class ReviewControllerTests {
 //	public void testGetAllList() throws Exception {
 //		
 //		log.info(
-//				mockMvc.perform(MockMvcRequestBuilders.get("/review/list"))
+//				mockMvc.perform(MockMvcRequestBuilders.get("/review/list")
+//						.param("pageNum", "2")
+//						.param("amount", "2"))
+//				.andReturn());
+//	}
+	
+//	@Test
+//	public void testGetApproveList() throws Exception{
+//		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/review/list/approve"))
 //				.andReturn());
 //	}
 }

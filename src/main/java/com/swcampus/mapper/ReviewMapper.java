@@ -2,6 +2,9 @@ package com.swcampus.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
+import com.swcampus.domain.Criteria;
 import com.swcampus.domain.ReviewDTO;
 import com.swcampus.domain.ReviewVO;
 
@@ -11,13 +14,20 @@ public interface ReviewMapper {
 	Integer insert(ReviewVO reviewVo);
 	
 	// 리뷰 전체 목록
-	List<ReviewVO> getAllList();
+	// 검색 : 
+	List<ReviewVO> getAllList(Criteria cri);
 	
 	// 특정 강의의 리뷰 목록
-	List<ReviewVO> getListByLectureId(Long lectureId);
+	List<ReviewVO> getListByLectureId(@Param("lectureId") Long lectureId, @Param("cri") Criteria cri);
 	
 	// 내가 작성한 강의 리뷰 목록
 	List<ReviewVO> getMyList(String email);
+	
+	// 승인 리뷰 목록
+	List<ReviewVO> getApprovedList();
+	
+	// 미승인 리뷰 목록
+	List<ReviewVO> getUnapprovedList();
 	
 	// 리뷰 상세
 	ReviewVO read(Long reviewId);
@@ -38,7 +48,7 @@ public interface ReviewMapper {
 	Integer updateApproval(ReviewVO review);
 	
 	// 모든 리뷰의 개수
-	Long getReviewListCnt();
+	Long getReviewListCnt(Criteria cri);
 	
 	// 특정 강의의 리뷰 개수
 	Long getReviewListCntByLectureId(Long lectureId);

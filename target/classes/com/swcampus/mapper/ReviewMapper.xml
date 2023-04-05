@@ -18,17 +18,42 @@
 	
 	<!-- 전체 리뷰 -->
 	<select id="getAllList" resultType="com.swcampus.domain.ReviewVO">
-		select * from review order by reviewId desc
+		<![CDATA[
+			select * 
+				from (select rownum rn, review.*
+							from review
+							where rownum <= #{pageNum} * #{amount}
+					)
+				where rn > (#{pageNum} - 1) * #{amount}
+		]]>
 	</select>
 	
 	<!-- 특정 강좌에 해당하는 리뷰 목록 -->
-	<select id="getListByLectureId" resultType="com.swcampus.domain.ReviewVO">
-		select * from review where lectureId = #{lectureId} order by reviewId desc
+	<select id="getListByLectureId" parameterType="com.swcampus.domain.Criteria" resultType="com.swcampus.domain.ReviewVO">
+		<![CDATA[
+			select * 
+				from (select rownum rn, review.*
+							from review
+							where rownum <= #{cri.pageNum} * #{cri.amount}
+								and lectureId = #{lectureId}
+					)
+				where rn > (#{cri.pageNum} - 1) * #{cri.amount}
+		]]>		
 	</select>
 	
-	<!-- 특정 회원이 작성한 리뷰 목록 -->
+	<!-- 내가 작성한 리뷰 목록 -->
 	<select id="getMyList" resultType="com.swcampus.domain.ReviewVO">
 		select * from review where email = #{email} order by reviewId desc
+	</select>
+	
+	<!-- 승인 리뷰 목록 -->
+	<select id="getApprovedList" resultType="com.swcampus.domain.ReviewVO">
+		select * from review where approval = '승인'
+	</select>
+	
+	<!-- 미승인 리뷰 목록 -->
+	<select id="getUnapprovedList" resultType="com.swcampus.domain.ReviewVO">
+		select * from review where approval = '미승인'
 	</select>
 	
 	<!-- 리뷰 상세 -->
@@ -80,12 +105,12 @@
 	
 	<!-- 전체 리뷰 개수 -->
 	<select id="getReviewListCnt" resultType="Long">
-		select count(*) from review
+		select count(*) from review where reviewId > 0
 	</select>
 	
 	<!-- 특정 강의의 리뷰 개수 -->
 	<select id="getReviewListCntByLectureId" resultType="Long">
-		select count(*) from review where lectureId = #{lectureId}
+		select count(*) from review where lectureId = #{lectureId} and reviewId > 0
 	</select>
 	
 	<!-- 특정 강의의 리뷰 평점 -->
